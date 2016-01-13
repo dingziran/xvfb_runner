@@ -2,6 +2,7 @@
  * Created by dingziran on 2016/1/11.
  */
 var headless = require('headless');
+var spawn = require('child_process').spawn;
 var fs = require('fs');
 var servernum=99;
 fs.exists('/tmp/.X' + servernum + '-lock', function(exists) {
@@ -21,4 +22,11 @@ fs.exists('/tmp/.X' + servernum + '-lock', function(exists) {
             }
         });
     }
+    var interval = 5 * 1000 * 60;
+    setInterval(function () {
+        var ps = spawn('./kill.sh', []);
+        ps.on('close', (code) => {
+            console.log(`child process exited with code ${code}`);
+        });
+    },interval);
 });
