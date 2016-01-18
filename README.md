@@ -17,6 +17,11 @@ $ sudo apt-get update && apt-get install -y xvfb x11-xkb-utils xfonts-100dpi xfo
 ### download this project (Maybe I will public this to npm later)
 $ git clone <this repo>
 
+### modify kill.sh
+Xvfb-runner will kill orphan process periodically by run kill.sh.
+
+Modify to meet your need.
+
 ### using pm2 to keep it running.
 $ cd <this repo> && pm2 start index.js
 ```
